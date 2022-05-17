@@ -1,5 +1,11 @@
-function App() {
-  return <div className="App"></div>;
-}
+import Routes from "../src/routing/routes";
+import { CssBaseline } from "@mui/material";
 
-export default App;
+export default function App() {
+  return (
+    <>
+      <CssBaseline />
+      <Routes />
+    </>
+  );
+}
