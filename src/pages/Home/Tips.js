@@ -11,7 +11,7 @@ const tips = [
 
 export default function Tips() {
   return (
-    <Container sx={{ background: "transparent" }}>
+    <Container id="tips">
       <Typography variant="h4">Tips</Typography>
       <List component={Paper} elevation={3} sx={{ background: "#f6f6fe", padding: 2, marginTop: 5 }}>
         {tips.map((tip, index) => (

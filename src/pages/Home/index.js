@@ -8,20 +8,24 @@ import Contact from "./Contact";
 export default function Home() {
   const matches = useMediaQuery("(min-width:900px)");
 
+  const Wrapper = ({ background, children }) => {
+    return <Box sx={{ background: background, padding: matches ? "100px" : "20px 00px 20px 0px" }}>{children}</Box>;
+  };
+
   return (
     <>
-      <Box sx={{ background: "#f6f6fe", padding: matches ? "100px" : "20px 00px 20px 0px" }}>
+      <Wrapper background={"#f6f6fe"}>
         <Brands />
-      </Box>
-      <Box sx={{ padding: matches ? "100px" : "20px 00px 20px 0px" }}>
+      </Wrapper>
+      <Wrapper background={"#ffffff"}>
         <Tips />
-      </Box>
-      <Box sx={{ background: "#f6f6fe", padding: matches ? "100px" : "20px 00px 20px 0px" }}>
+      </Wrapper>
+      <Wrapper background={"#f6f6fe"}>
         <FAQ />
-      </Box>
-      <Box sx={{ padding: matches ? "100px" : "20px 00px 20px 0px" }}>
+      </Wrapper>
+      <Wrapper background={"#ffffff"}>
         <Contact />
-      </Box>
+      </Wrapper>
     </>
   );
 }

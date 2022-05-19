@@ -1,8 +1,8 @@
-import { Typography, Container, Paper, Stack } from "@mui/material";
+import { Typography, Paper, Stack, Container } from "@mui/material";
 
 export default function Contact() {
   return (
-    <Container sx={{ background: "transparent" }}>
+    <Container id="contact">
       <Typography variant="h4" sx={{ marginBottom: 5 }}>
         Contact
       </Typography>

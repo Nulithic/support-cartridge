@@ -19,7 +19,7 @@ const Img = styled("img")({
 
 export default function Brands() {
   return (
-    <Container sx={{ background: "transparent" }}>
+    <Container id="home">
       <Grid container alignItems="center" spacing={6}>
         <Grid item>
           <Typography variant="h4">Choose a brand to get started:</Typography>

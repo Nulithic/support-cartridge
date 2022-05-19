@@ -23,7 +23,7 @@ const faqs = [
 
 export default function FAQ() {
   return (
-    <Container sx={{ background: "transparent" }}>
+    <Container id="faq">
       <Typography variant="h4" sx={{ marginBottom: 5 }}>
         Frequently Asked Questions
       </Typography>
