@@ -1,31 +1,37 @@
 import { Box, useMediaQuery } from "@mui/material";
 
-import Brands from "./Brands";
+import Splash from "./Splash";
+import Starter from "./Starter";
 import FAQ from "./FAQ";
 import Tips from "./Tips";
 import Contact from "./Contact";
 
+import gradient from "../../assets/gradient.jpg";
+
+const pages = [<Starter />, <Tips />, <FAQ />, <Contact />];
+
 export default function Home() {
   const matches = useMediaQuery("(min-width:900px)");
 
-  const Wrapper = ({ background, children }) => {
-    return <Box sx={{ background: background, padding: matches ? "100px" : "20px 00px 20px 0px" }}>{children}</Box>;
+  const boxStyle = {
+    backgroundImage: `url(${gradient})`,
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    // backgroundAttachment: "fixed",
+    padding: matches ? "50px" : "20px 00px 20px 0px",
   };
 
   return (
     <>
-      <Wrapper background={"#f6f6fe"}>
-        <Brands />
-      </Wrapper>
-      <Wrapper background={"#ffffff"}>
-        <Tips />
-      </Wrapper>
-      <Wrapper background={"#f6f6fe"}>
-        <FAQ />
-      </Wrapper>
-      <Wrapper background={"#ffffff"}>
-        <Contact />
-      </Wrapper>
+      <Box sx={boxStyle}>
+        <Splash />
+      </Box>
+      {pages.map((page, index) => (
+        <Box key={index} sx={{ background: "none", padding: matches ? "50px" : "20px 00px 20px 0px" }}>
+          {page}
+        </Box>
+      ))}
     </>
   );
 }

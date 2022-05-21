@@ -1,22 +1,23 @@
-import { Typography, Paper, Stack, Container } from "@mui/material";
+import { Typography, Paper, Stack, Link, Grid } from "@mui/material";
+import Section from "../../components/Section";
 
 export default function Contact() {
   return (
-    <Container id="contact">
-      <Typography variant="h4" sx={{ marginBottom: 5 }}>
-        Contact
-      </Typography>
-      <Stack spacing={2}>
-        <Paper elevation={3} sx={{ background: "#f6f6fe", padding: 2 }}>
-          <Typography variant="h5">Contact Us</Typography>
-          <Typography variant="body1">Email: info@supportcartridge.com</Typography>
-          <Typography variant="body1">Phone: 1-855-999-4657</Typography>
-        </Paper>
-        <Paper elevation={3} sx={{ background: "#f6f6fe", padding: 2 }}>
-          <Typography variant="h5">Create a Ticket</Typography>
-          <Typography variant="body1">Click here to create a ticket. Our tech support team will reply to you as soon as possible.</Typography>
-        </Paper>
-      </Stack>
-    </Container>
+    <Section id="contact" title="Contact">
+      <Grid item xs={12}>
+        <Stack spacing={2}>
+          <Paper elevation={3} sx={{ padding: 2 }}>
+            <Link underline="hover" color="inherit" href="https://supportcartridge.on.spiceworks.com/portal">
+              <Typography variant="h5">Create a Ticket</Typography>
+              <Typography variant="body1">Click here to create a ticket. Our tech support team will reply to you as soon as possible.</Typography>
+            </Link>
+          </Paper>
+          <Paper elevation={3} sx={{ padding: 2 }}>
+            <Typography variant="h5">Contact Us</Typography>
+            <Typography variant="body1">Email: info@supportcartridge.com</Typography>
+          </Paper>
+        </Stack>
+      </Grid>
+    </Section>
   );
 }

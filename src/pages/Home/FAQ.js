@@ -1,5 +1,7 @@
-import { Typography, Container, Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
+import { Paper, Typography, Grid, Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+
+import Section from "../../components/Section";
 
 const faqs = [
   {
@@ -19,25 +21,21 @@ const faqs = [
   },
 ];
 
-//f5f5fe
-
 export default function FAQ() {
   return (
-    <Container id="faq">
-      <Typography variant="h4" sx={{ marginBottom: 5 }}>
-        Frequently Asked Questions
-      </Typography>
-
-      {faqs.map((item, index) => (
-        <Accordion key={index} elevation={3}>
-          <AccordionSummary expandIcon={<ExpandMoreIcon />} sx={{ background: "#dedefc" }}>
-            <Typography>{item.question}</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography>{item.answer}</Typography>
-          </AccordionDetails>
-        </Accordion>
-      ))}
-    </Container>
+    <Section id="faq" title="Frequently Asked Questions">
+      <Grid item xs={12}>
+        {faqs.map((item, index) => (
+          <Accordion key={index} elevation={3}>
+            <AccordionSummary component={Paper} expandIcon={<ExpandMoreIcon />}>
+              <Typography variant="h6">{item.question}</Typography>
+            </AccordionSummary>
+            <AccordionDetails sx={{ background: "#ebebeb" }}>
+              <Typography>{item.answer}</Typography>
+            </AccordionDetails>
+          </Accordion>
+        ))}
+      </Grid>
+    </Section>
   );
 }

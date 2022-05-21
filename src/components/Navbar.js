@@ -17,10 +17,14 @@ import {
   useScrollTrigger,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import links from "../routing/links";
 
 export default function Navbar() {
+  let navigate = useNavigate();
+  let location = useLocation();
+
   const [drawerState, setDrawState] = useState(false);
 
   const toggleDrawer = () => {
@@ -29,19 +33,17 @@ export default function Navbar() {
 
   const scrollToSection = (id) => {
     var element = document.getElementById(id);
-
+    if (location.pathname !== "/") navigate("../");
     switch (id) {
       case "home":
         window.scrollTo({ top: 0, behavior: "smooth" });
         break;
-      case "tips":
-        var position = element.getBoundingClientRect().top;
-        window.scrollTo({ top: position + window.pageYOffset - 100, behavior: "smooth" });
-        break;
       case "support":
+        navigate("../support");
         break;
       default:
-        element.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+        var position = element.getBoundingClientRect().top;
+        window.scrollTo({ top: position + window.pageYOffset - 100, behavior: "smooth" });
     }
   };
 

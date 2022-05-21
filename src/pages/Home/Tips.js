@@ -1,5 +1,7 @@
-import { Paper, Typography, Container, List, ListItem, ListItemText, ListItemIcon } from "@mui/material";
+import { Paper, Grid, List, ListItem, ListItemText, ListItemIcon } from "@mui/material";
 import CircleIcon from "@mui/icons-material/Circle";
+
+import Section from "../../components/Section";
 
 const tips = [
   "Always follow your printer's recommended maintenance guide.",
@@ -11,18 +13,19 @@ const tips = [
 
 export default function Tips() {
   return (
-    <Container id="tips">
-      <Typography variant="h4">Tips</Typography>
-      <List component={Paper} elevation={3} sx={{ background: "#f6f6fe", padding: 2, marginTop: 5 }}>
-        {tips.map((tip, index) => (
-          <ListItem key={index}>
-            <ListItemIcon>
-              <CircleIcon sx={{ fontSize: 15 }} />
-            </ListItemIcon>
-            <ListItemText>{tip}</ListItemText>
-          </ListItem>
-        ))}
-      </List>
-    </Container>
+    <Section id="tips" title="Tips">
+      <Grid item xs={12}>
+        <List component={Paper} elevation={3} sx={{ padding: 2 }}>
+          {tips.map((tip, index) => (
+            <ListItem key={index}>
+              <ListItemIcon>
+                <CircleIcon sx={{ fontSize: 15 }} />
+              </ListItemIcon>
+              <ListItemText>{tip}</ListItemText>
+            </ListItem>
+          ))}
+        </List>
+      </Grid>
+    </Section>
   );
 }
