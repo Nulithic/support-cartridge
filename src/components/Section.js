@@ -1,4 +1,4 @@
-import { Typography, Grid, Container, Paper } from "@mui/material";
+import { Typography, Grid, Container } from "@mui/material";
 
 export default function Section(props) {
   const { id, title, children } = props;
