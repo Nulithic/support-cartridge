@@ -19,8 +19,7 @@ export default function Splash() {
       </Grid>
       <Grid item xs={12} textAlign="center">
         <Typography variant="h3">How can we help you?</Typography>
-
-        <Typography variant="subtitle">We have the information and support for many common brands.</Typography>
+        <Typography variant="subtitle">We are happy to provide you with information and support for many common brands.</Typography>
       </Grid>
     </Section>
   );
