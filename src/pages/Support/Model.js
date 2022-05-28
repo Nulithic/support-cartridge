@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Typography, Card, CardActionArea, CardContent, Grid, Box } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import Section from "../../components/Section";
 
@@ -36,51 +36,44 @@ const Img = styled("img")({
   height: "8rem",
 });
 
-export default function Brand() {
-  let navigate = useNavigate();
-  const { brand } = useParams();
+export default function Model() {
+  const { brand, model } = useParams();
 
-  const [brandObject, setBrandObject] = useState({});
-
-  const handleModelLink = (model) => {
-    navigate(`../${brand}/${model}`);
-  };
+  const [modelObject, setModelObject] = useState({});
 
   useEffect(() => {
-    const obj = brands.filter((item) => item.id === brand);
-    setBrandObject(obj[0]);
-  }, [brand]);
-
-  const CardView = () => {
-    const supportList = brandObject.support;
-    if (supportList !== undefined) {
-      return (
-        <Grid container item xs={12} spacing={2} padding={2}>
-          {supportList.map((item, key) => (
-            <Grid item key={key} xs={12}>
-              <Card>
-                <CardActionArea onClick={() => handleModelLink(item.PID)}>
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                      {item["Product Description"]}
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
-      );
-    } else return null;
-  };
+    const brandsObj = brands.filter((item) => item.id === brand);
+    const modelObj = brandsObj[0].support.filter((item) => item.PID.toString() === model);
+    setModelObject(modelObj[0]);
+  }, [brand, model]);
 
   return (
     <Box sx={{ backgroundColor: "#ebf8f4" }}>
       <Section>
         <Grid item xs={12}>
-          <Img src={brandObject.logo} />
+          {/* <Img src={brandsObj[0].logo} /> */}
+          <Typography>{modelObject["Product Description"]}</Typography>
         </Grid>
-        <CardView />
+        <Grid item xs={12}>
+          <Typography>{modelObject.FAQ1}</Typography>
+          <Typography>{modelObject.Solution1}</Typography>
+        </Grid>
+        <Grid item xs={12}>
+          <Typography>{modelObject.FAQ2}</Typography>
+          <Typography>{modelObject.Solution2}</Typography>
+        </Grid>
+        <Grid item xs={12}>
+          <Typography>{modelObject.FAQ3}</Typography>
+          <Typography>{modelObject.Solution3}</Typography>
+        </Grid>
+        <Grid item xs={12}>
+          <Typography>{modelObject.FAQ4}</Typography>
+          <Typography>{modelObject.Solution4}</Typography>
+        </Grid>
+        <Grid item xs={12}>
+          <Typography>{modelObject.FAQ5}</Typography>
+          <Typography>{modelObject.Solution5}</Typography>
+        </Grid>
       </Section>
     </Box>
   );

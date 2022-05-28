@@ -5,6 +5,7 @@ import Layout from "../components/Layout";
 import Home from "../pages/Home";
 import Support from "../pages/Support";
 import Brand from "../pages/Support/Brand";
+import Model from "../pages/Support/Model";
 import Error from "../pages/Error";
 
 export default function Router() {
@@ -20,6 +21,7 @@ export default function Router() {
       children: [
         { index: true, element: <Support /> },
         { path: ":brand", element: <Brand /> },
+        { path: ":brand/:model", element: <Model /> },
       ],
     },
     {

@@ -1,24 +1,19 @@
 import { Outlet } from "react-router-dom";
-import { Box } from "@mui/material";
+import { Grid } from "@mui/material";
 
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-// import Background from "../assets/background.jpg";
 
 export default function Layout() {
-  // const backgroundStyle = {
-  //   backgroundImage: `url(${Background})`,
-  //   backgroundRepeat: "no-repeat",
-  //   backgroundSize: "cover",
-  //   backgroundPosition: "center",
-  //   backgroundAttachment: "fixed",
-  // };
-
   return (
-    <Box>
+    <Grid container sx={{ minHeight: "100vh" }}>
       <Navbar />
-      <Outlet />
-      <Footer />
-    </Box>
+      <Grid item xs={12}>
+        <Outlet />
+      </Grid>
+      <Grid item xs={12} alignSelf="flex-end">
+        <Footer />
+      </Grid>
+    </Grid>
   );
 }

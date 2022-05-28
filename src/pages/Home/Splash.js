@@ -13,7 +13,7 @@ const Img = styled("img")({
 
 export default function Splash() {
   return (
-    <Section id="splash" title="">
+    <Section id="splash">
       <Grid item xs={12}>
         <Img src={splash}></Img>
       </Grid>
