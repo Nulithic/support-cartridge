@@ -5,7 +5,7 @@ export default function Section(props) {
 
   return (
     <Container id={id}>
-      <Grid container alignItems="center" justifyContent="center" spacing={5}>
+      <Grid container alignItems="center" justifyContent="center" spacing={5} sx={{ paddingTop: 2, paddingBottom: 5 }}>
         <Grid item>
           <Typography variant="h4">{title}</Typography>
         </Grid>

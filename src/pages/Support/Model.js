@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { Typography, Card, CardActionArea, CardContent, Grid, Box } from "@mui/material";
+import { Paper, Typography, Accordion, AccordionSummary, AccordionDetails, Grid, Box, Divider } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { useParams } from "react-router-dom";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 import Section from "../../components/Section";
 
@@ -33,7 +34,7 @@ const Img = styled("img")({
   margin: "auto",
   display: "block",
   maxWidth: "100%",
-  height: "8rem",
+  height: "20rem",
 });
 
 export default function Model() {
@@ -47,34 +48,49 @@ export default function Model() {
     setModelObject(modelObj[0]);
   }, [brand, model]);
 
+  const AccordionView = () => {
+    if (modelObject.Troubleshooting !== undefined) {
+      const troubleshooting = modelObject.Troubleshooting.filter((item) => item.Problem !== null);
+      return (
+        <>
+          {troubleshooting.map((item, index) => (
+            <Grid item key={index} xs={12}>
+              <Accordion elevation={3}>
+                <AccordionSummary component={Paper} expandIcon={<ExpandMoreIcon />}>
+                  <Typography variant="h6">{item.Problem}</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Grid container spacing={2}>
+                    <Grid item>
+                      <Typography variant="body1" whiteSpace="pre-wrap">
+                        {item.Solution}
+                      </Typography>
+                      <Divider sx={{ paddingY: 1 }} />
+                    </Grid>
+
+                    {item.Solution_Figure.map((pics, index) => (
+                      <Grid item key={index}>
+                        <Img src={`https://supportcartridge.com/img/${brand}/${pics}`} />
+                        <Typography variant="body2">{`Figure ${index + 1}`}</Typography>
+                      </Grid>
+                    ))}
+                  </Grid>
+                </AccordionDetails>
+              </Accordion>
+            </Grid>
+          ))}
+        </>
+      );
+    } else return null;
+  };
+
   return (
-    <Box sx={{ backgroundColor: "#ebf8f4" }}>
-      <Section>
-        <Grid item xs={12}>
-          {/* <Img src={brandsObj[0].logo} /> */}
-          <Typography>{modelObject["Product Description"]}</Typography>
-        </Grid>
-        <Grid item xs={12}>
-          <Typography>{modelObject.FAQ1}</Typography>
-          <Typography>{modelObject.Solution1}</Typography>
-        </Grid>
-        <Grid item xs={12}>
-          <Typography>{modelObject.FAQ2}</Typography>
-          <Typography>{modelObject.Solution2}</Typography>
-        </Grid>
-        <Grid item xs={12}>
-          <Typography>{modelObject.FAQ3}</Typography>
-          <Typography>{modelObject.Solution3}</Typography>
-        </Grid>
-        <Grid item xs={12}>
-          <Typography>{modelObject.FAQ4}</Typography>
-          <Typography>{modelObject.Solution4}</Typography>
-        </Grid>
-        <Grid item xs={12}>
-          <Typography>{modelObject.FAQ5}</Typography>
-          <Typography>{modelObject.Solution5}</Typography>
-        </Grid>
-      </Section>
-    </Box>
+    <Section>
+      <Grid item xs={12}>
+        {/* <Img src={brandsObj[0].logo} /> */}
+        <Typography variant="h4">{modelObject.Product_Description}</Typography>
+      </Grid>
+      <AccordionView />
+    </Section>
   );
 }
