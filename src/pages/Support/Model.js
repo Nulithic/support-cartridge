@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
+<<<<<<< HEAD
 import { Paper, Typography, Accordion, AccordionSummary, AccordionDetails, Grid, Divider } from "@mui/material";
+=======
+import { Paper, Typography, Accordion, AccordionSummary, AccordionDetails, Grid, Box, Divider } from "@mui/material";
+>>>>>>> 84bcbc50ac69f1c2f23e5a645198223c59459e1f
 import { styled } from "@mui/material/styles";
 import { useParams } from "react-router-dom";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
