@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Typography, Card, CardActionArea, CardContent, Grid, Box } from "@mui/material";
+import { Typography, Card, CardActionArea, CardContent, Grid, TextField } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { useParams, useNavigate } from "react-router-dom";
 
@@ -41,9 +41,15 @@ export default function Brand() {
   const { brand } = useParams();
 
   const [brandObject, setBrandObject] = useState({});
+  const [supportList, setSupportList] = useState([]);
 
   const handleModelLink = (model) => {
     navigate(`../${brand}/${model}`);
+  };
+
+  const handleChange = (event) => {
+    let filtered = brandObject.support.filter((obj) => obj.Product_Description.includes(event.target.value.toUpperCase()));
+    setSupportList(filtered);
   };
 
   useEffect(() => {
@@ -51,37 +57,45 @@ export default function Brand() {
     setBrandObject(obj[0]);
   }, [brand]);
 
+  useEffect(() => {
+    if (brandObject.support !== undefined) setSupportList(brandObject.support);
+  }, [brandObject.support]);
+
   const CardView = () => {
-    const supportList = brandObject.support;
-    if (supportList !== undefined) {
+    if (supportList.length > 0) {
       return (
-        <Grid container item xs={12} spacing={2} padding={2}>
-          {supportList.map((item, key) => (
-            <Grid item key={key} xs={12}>
-              <Card>
-                <CardActionArea onClick={() => handleModelLink(item.PID)}>
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                      {item["Product Description"]}
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-              </Card>
-            </Grid>
-          ))}
+        <Grid container item xs={12} spacing={2} justifyContent="center">
+          {supportList.length > 0 ? (
+            supportList.map((item, key) => (
+              <Grid item key={key} xs={12}>
+                <Card>
+                  <CardActionArea onClick={() => handleModelLink(item.PID)}>
+                    <CardContent>
+                      <Typography variant="h5">{item.Product_Description}</Typography>
+                    </CardContent>
+                  </CardActionArea>
+                </Card>
+              </Grid>
+            ))
+          ) : (
+            <Typography variant="h5" paddingTop={2}>
+              Coming Soon
+            </Typography>
+          )}
         </Grid>
       );
     } else return null;
   };
 
   return (
-    <Box sx={{ backgroundColor: "#ebf8f4" }}>
-      <Section>
-        <Grid item xs={12}>
-          <Img src={brandObject.logo} />
-        </Grid>
-        <CardView />
-      </Section>
-    </Box>
+    <Section>
+      <Grid item xs={12}>
+        <Img src={brandObject.logo} />
+      </Grid>
+      <Grid item xs={12}>
+        <TextField fullWidth label="Search" onChange={handleChange} />
+      </Grid>
+      <CardView />
+    </Section>
   );
 }

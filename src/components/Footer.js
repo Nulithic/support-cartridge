@@ -1,6 +1,6 @@
 import { Typography, Container, Box } from "@mui/material";
 
-export default function Contact() {
+export default function Footer() {
   return (
     <Box sx={{ background: "#ddd", display: "flex", justifyContent: "center" }}>
       <Container sx={{ textAlign: "center", margin: 2 }}>

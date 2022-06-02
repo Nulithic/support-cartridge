@@ -1,19 +1,17 @@
 import { Outlet } from "react-router-dom";
-import { Grid } from "@mui/material";
+import { Box } from "@mui/material";
 
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
 export default function Layout() {
   return (
-    <Grid container sx={{ minHeight: "100vh" }}>
+    <>
       <Navbar />
-      <Grid item xs={12}>
+      <Box sx={{ backgroundColor: "#ebf8f4", minHeight: "calc(100vh - 80px)" }}>
         <Outlet />
-      </Grid>
-      <Grid item xs={12} alignSelf="flex-end">
-        <Footer />
-      </Grid>
-    </Grid>
+      </Box>
+      <Footer />
+    </>
   );
 }
