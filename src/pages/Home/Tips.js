@@ -13,7 +13,7 @@ const tips = [
 
 export default function Tips() {
   return (
-    <Section id="tips" title="Tips">
+    <Section id="tips" title="Recommendations">
       <Grid item xs={12}>
         <List component={Paper} elevation={3} sx={{ padding: 2 }}>
           {tips.map((tip, index) => (

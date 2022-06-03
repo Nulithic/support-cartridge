@@ -91,13 +91,13 @@ export default function Navbar() {
                 </Drawer>
               </Box>
 
-              <Typography variant="h5" noWrap component="div" sx={{ mr: 2, display: { xs: "none", md: "flex" } }}>
+              <Typography variant="h4" noWrap component="div" sx={{ mr: 2, display: { xs: "none", md: "flex" }, fontWeight: "bold" }}>
                 Support Cartridge
               </Typography>
 
               <Stack direction="row" spacing={2} sx={{ flexGrow: 1, justifyContent: "flex-end", display: { xs: "none", md: "flex" } }}>
                 {links.map((page) => (
-                  <Link key={page.id} underline="hover" variant="body" sx={{ color: "white" }} onClick={() => scrollToSection(page.id)}>
+                  <Link key={page.id} underline="hover" variant="body" color="black" onClick={() => scrollToSection(page.id)}>
                     {page.title}
                   </Link>
                 ))}

@@ -1,11 +1,13 @@
 import Routes from "../src/routing/routes";
-import { CssBaseline } from "@mui/material";
+
+import ThemeConfig from "./theme";
+import GlobalStyles from "./theme/globalStyles";
 
 export default function App() {
   return (
-    <>
-      <CssBaseline />
+    <ThemeConfig>
+      <GlobalStyles />
       <Routes />
-    </>
+    </ThemeConfig>
   );
 }

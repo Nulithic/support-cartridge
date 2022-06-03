@@ -24,18 +24,18 @@ const faqs = [
 export default function FAQ() {
   return (
     <Section id="faq" title="Frequently Asked Questions">
-      <Grid item xs={12}>
-        {faqs.map((item, index) => (
-          <Accordion key={index} elevation={3}>
+      {faqs.map((item, index) => (
+        <Grid item key={index} xs={12}>
+          <Accordion elevation={3}>
             <AccordionSummary component={Paper} expandIcon={<ExpandMoreIcon />}>
               <Typography variant="h6">{item.question}</Typography>
             </AccordionSummary>
-            <AccordionDetails sx={{ background: "#ebebeb" }}>
+            <AccordionDetails>
               <Typography>{item.answer}</Typography>
             </AccordionDetails>
           </Accordion>
-        ))}
-      </Grid>
+        </Grid>
+      ))}
     </Section>
   );
 }
