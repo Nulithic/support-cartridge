@@ -97,7 +97,7 @@ export default function Navbar() {
 
               <Stack direction="row" spacing={2} sx={{ flexGrow: 1, justifyContent: "flex-end", display: { xs: "none", md: "flex" } }}>
                 {links.map((page) => (
-                  <Link key={page.id} underline="hover" variant="body" color="black" onClick={() => scrollToSection(page.id)}>
+                  <Link key={page.id} underline="hover" variant="body" color="black" sx={{ cursor: "pointer" }} onClick={() => scrollToSection(page.id)}>
                     {page.title}
                   </Link>
                 ))}
